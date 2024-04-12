@@ -38,7 +38,6 @@ export async function fetchRevenue() {
 }
 
 export async function fetchLatestInvoices() {
-
   noStore();
 
   try {
@@ -61,7 +60,6 @@ export async function fetchLatestInvoices() {
 }
 
 export async function fetchCardData() {
-
   noStore();
 
   try {
@@ -103,7 +101,6 @@ export async function fetchFilteredInvoices(
   query: string,
   currentPage: number,
 ) {
-
   noStore();
 
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -138,7 +135,6 @@ export async function fetchFilteredInvoices(
 }
 
 export async function fetchInvoicesPages(query: string) {
-
   noStore();
   try {
     const count = await sql`SELECT COUNT(*)
@@ -161,7 +157,6 @@ export async function fetchInvoicesPages(query: string) {
 }
 
 export async function fetchInvoiceById(id: string) {
-
   noStore();
   try {
     const data = await sql<InvoiceForm>`
@@ -180,6 +175,7 @@ export async function fetchInvoiceById(id: string) {
       amount: invoice.amount / 100,
     }));
 
+    console.log(invoice); // Invoice is an empty array []
     return invoice[0];
   } catch (error) {
     console.error('Database Error:', error);
